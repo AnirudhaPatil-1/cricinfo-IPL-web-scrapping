@@ -57,18 +57,18 @@ function extractMatchesLink(html){
 }
 
 //function name prep by me
-// function scoreCard(url){
-//     request(url, cb);
-//     function cb(err, response, html){
-//         if(err){
-//             console.log(err);
-//         }else{
-//             //function prep by me
-//             prepScoreCard(html);
-//         }
-//     }
-// }
+function scoreCard(url){
+    request(url, cb);
+    function cb(err, response, html){
+        if(err){
+            console.log(err);
+        }else{
+            //function prep by me
+            prepScoreCard(html);
+        }
+    }
+}
 
-// function prepScoreCard(html){
-    
-// }
+function prepScoreCard(html){
+    let $ = cheerio.load(html);
+}
