@@ -34,14 +34,14 @@ function extractMatchDetails(html){
     // console.log(venue);
     // console.log(date);
 
-    let teamsBlock = $(".ds-w-full.ds-bg-fill-content-prime.ds-overflow-hidden.ds-rounded-xl.ds-border.ds-border-line.ds-mb-4 .ds-p-0");
-    // console.log(teamsBlock.length); //8 
-    //we require 0 and 1 index block
+    let teamsBlock = $(".ds-w-full.ds-bg-fill-content-prime.ds-overflow-hidden.ds-rounded-xl.ds-border.ds-border-line.ds-mb-4");
+    console.log(teamsBlock.length); //8 
+    // we require 0 and 1 index block
     let htmlStr = "";
     for(let i = 0; i < 2; i++){
         htmlStr += $(teamsBlock[i]).html();
     }
-    console.log(htmlStr);
+    // console.log(htmlStr);
     //create the required short html file teams.html
 
 
