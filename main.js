@@ -2,6 +2,8 @@ const url = "https://www.espncricinfo.com/series/ipl-2020-21-1210595";
 //data to fill in excel - venue, data, opponent, result, runs, balls, fours sexes, sr
 const request = require("request");
 const cheerio = require("cheerio");
+const AllMatchObj = require("./allMatch");
+//home page
 request(url, cb);
 function cb(err, response, html){
     if(err){
@@ -20,41 +22,43 @@ function extractLink(html){
     // console.log(resultBox.length); //1
     let resultLink = $(resultBox).find("a").attr("href");
     let resultLinkFull = `https://www.espncricinfo.com${resultLink}`;
-    // console.log(resultLinkFull);
-    getAllMatchesLink(resultLinkFull);
+    console.log(resultLinkFull);
+    // getAllMatchesLink(resultLinkFull);
+    AllMatchObj.gAML(resultLinkFull);
+
 }
 
-function getAllMatchesLink(url){
-    request(url, cb);
-    function cb(err, response, html){
-        if(err){
-            console.log(err);
-        }else{
-            extractMatchesLink(html);
+// function getAllMatchesLink(url){
+//     request(url, cb);
+//     function cb(err, response, html){
+//         if(err){
+//             console.log(err);
+//         }else{
+//             extractMatchesLink(html);
 
-        }
-    }
-}
+//         }
+//     }
+// }
 
-function extractMatchesLink(html){
-    let $ = cheerio.load(html);
-    //60 matches on ipl matches page
-    let matchesArr = $(".ds-grow.ds-px-4.ds-border-r.ds-border-line-default-translucent>a");
-    // console.log(matchesArr.length);
+// function extractMatchesLink(html){
+//     let $ = cheerio.load(html);
+//     //60 matches on ipl matches page
+//     let matchesArr = $(".ds-grow.ds-px-4.ds-border-r.ds-border-line-default-translucent>a");
+//     // console.log(matchesArr.length);
 
     
-    let matchesUrl = [];
-    for(let i = 0; i < matchesArr.length; i++){
-        let matchUrl = $(matchesArr[i]).attr("href");
-        // console.log(matchUrl);
-        let matchFullUrl = `https://www.espncricinfo.com${matchUrl}`;
-        matchesUrl.push(matchFullUrl);
-        //function name prep by me
-        scoreCard(matchFullUrl);
-    }
-    // console.log(matchesUrl.length); //60  
-    // console.log(matchesUrl); // arr of full url of matches
-}
+//     let matchesUrl = [];
+//     for(let i = 0; i < matchesArr.length; i++){
+//         let matchUrl = $(matchesArr[i]).attr("href");
+//         // console.log(matchUrl);
+//         let matchFullUrl = `https://www.espncricinfo.com${matchUrl}`;
+//         matchesUrl.push(matchFullUrl);
+//         //function name prep by me
+//         scoreCard(matchFullUrl);
+//     }
+//     // console.log(matchesUrl.length); //60  
+//     // console.log(matchesUrl); // arr of full url of matches
+// }
 
 //function name prep by me
 function scoreCard(url){
