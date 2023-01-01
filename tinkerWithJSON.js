@@ -45,11 +45,20 @@ function excelWriter(filePath, json, sheetName){
     xlsx.writeFileSync(newWB, "abc.xlsx");
 }
 //READ 
-//get worksheet
-let wb = xlsx.readFile("abc.xlsx");
-//get sheet
-let excelData = wb.Sheets["sheet-1"];
-//get sheet data
-let ans = xlsx.utils.sheet_to_json(excelData);
-console.log(ans);
+// //get worksheet
+// let wb = xlsx.readFile("abc.xlsx");
+// //get sheet
+// let excelData = wb.Sheets["sheet-1"];
+// //get sheet data
+// let ans = xlsx.utils.sheet_to_json(excelData);
+// console.log(ans);
+function excelReader(filePath, sheetName){
+    if(fs.existsSync(filePath) == false){
+        return [];
+    }
+    let wb = xlsx.readFile(filePath);
+    let excelData = wb.Sheets[sheetName];
+    let ans = xlsx.utils.sheet_to_json(excelData);
+    return;
+}
 
