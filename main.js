@@ -26,7 +26,7 @@ function extractLink(html){
     // console.log(resultBox.length); //1
     let resultLink = $(resultBox).find("a").attr("href");
     let resultLinkFull = `https://www.espncricinfo.com${resultLink}`;
-    console.log(resultLinkFull);
+    // console.log(resultLinkFull);
     // getAllMatchesLink(resultLinkFull);
     AllMatchObj.gAML(resultLinkFull);
 

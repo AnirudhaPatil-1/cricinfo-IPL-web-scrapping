@@ -56,7 +56,7 @@ function extractMatchDetails(html){
         let oppIndex = i == 0?1:0;
         let oppTeamName = $(innings[oppIndex]).find(".ds-text-title-xs.ds-font-bold.ds-capitalize").text().trim();
         // console.log(oppTeamName);
-        console.log(`${venue}| ${date}| ${teamName}| ${oppTeamName}| ${result} `);
+        // console.log(`${venue}| ${date}| ${teamName}| ${oppTeamName}| ${result} `);
 
         let currInning =  $(innings[i]);
         let allRows = currInning.find(".ds-w-full.ds-table.ds-table-md.ds-table-auto.ci-scorecard-table tbody tr");
@@ -79,8 +79,8 @@ function extractMatchDetails(html){
                 let fours =  $(allCols[5]).text().trim();
                 let sixes = $(allCols[6]).text().trim();
                 let strikeRate = $(allCols[7]).text().trim();
-                console.log(`${playerName} ${runs} ${balls} ${fours} ${sixes} ${strikeRate}`);   
-                processPlayer(teamName, playerName, runs, balls, fours, sixes, strikeRate, oppTeamName, venue);
+                // console.log(`${playerName} ${runs} ${balls} ${fours} ${sixes} ${strikeRate}`);   
+                processPlayer(teamName, playerName, runs, balls, fours, sixes, strikeRate, oppTeamName, venue, date, result);
             }
         }
     }
@@ -89,11 +89,11 @@ function extractMatchDetails(html){
 
 
 }
-function processPlayer(teamName, playerName, runs, balls, fours, sixes, strikeRate, oppTeamName, venue){
+function processPlayer(teamName, playerName, runs, balls, fours, sixes, strikeRate, oppTeamName, venue, date, result){
     let teamPath = path.join(__dirname, "ipl", teamName);
     dirCreater(teamPath);
     let filePath = path.join(teamPath, playerName + ".xlsx");
-    let content = excelWriter(filePath, playerName);
+    let content = excelReader(filePath, playerName);
     let playerObj = {
         teamName, 
         playerName,
@@ -108,7 +108,7 @@ function processPlayer(teamName, playerName, runs, balls, fours, sixes, strikeRa
         result
     }
     content.push(playerObj);
-
+    excelWriter(filePath, content, playerName);
 
 }
 
@@ -120,9 +120,9 @@ function dirCreater(filePath){
 
 function excelWriter(filePath, json, sheetName){
     let newWB = xlsx.utils.book_new();
-    let newWs = xlsx.utils.json_to_sheet(json);
+    let newWS = xlsx.utils.json_to_sheet(json);
     xlsx.utils.book_append_sheet(newWB, newWS, sheetName);
-    xlsx.writeFile(newWB, filepath);
+    xlsx.writeFile(newWB, filePath);
 }
 
 function excelReader(filePath, sheetName){

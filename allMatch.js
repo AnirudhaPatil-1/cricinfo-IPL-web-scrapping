@@ -26,7 +26,7 @@ function extractMatchesLink(html){
         // console.log(matchUrl);
         let matchFullUrl = `https://www.espncricinfo.com${matchUrl}`;
         matchesUrl.push(matchFullUrl);
-        console.log(matchFullUrl);
+        // console.log(matchFullUrl);
         //function name prep by me
         // scoreCard(matchFullUrl);
         ScoreCardObj.pSCCU(matchFullUrl);
