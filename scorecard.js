@@ -71,7 +71,19 @@ function extractMatchDetails(html){
             // console.log(isWorthy);
             if(isWorthy == true){
                 //to find -> batsmen name Runs	Balls	4s	6s	SR(strike rate)
+
+                //****ERROR "sheet length crossing 31 characters" and so the programme terminates and stops crapping data****
+                //*****MY SOLUTION -> check playerName string length if +31 slice to 30 length and pass to sheet *****
                 let playerName = $(allCols[0]).text().trim();
+                playerName = truncate(playerName, 30);
+                function truncate(playerName, n){
+                    if(playerName.length <= n){
+                        return playerName;
+                    }else{
+                        return playerName.slice(0, n -1);
+                    }
+                }
+
                 // console.log(playerName);
                 //*req para @ index:  runs - 2, balls - 3, 4s - 5, 6s - 6, sr - 7 *
                 let runs = $(allCols[2]).text().trim();
