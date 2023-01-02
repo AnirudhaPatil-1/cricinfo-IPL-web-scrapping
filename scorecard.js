@@ -56,7 +56,7 @@ function extractMatchDetails(html){
         let oppIndex = i == 0?1:0;
         let oppTeamName = $(innings[oppIndex]).find(".ds-text-title-xs.ds-font-bold.ds-capitalize").text().trim();
         // console.log(oppTeamName);
-        // console.log(`${venue}| ${date}| ${teamName}| ${oppTeamName}| ${result} `);
+        console.log(`${venue}| ${date}| ${teamName}| ${oppTeamName}| ${result} `);
 
         let currInning =  $(innings[i]);
         let allRows = currInning.find(".ds-w-full.ds-table.ds-table-md.ds-table-auto.ci-scorecard-table tbody tr");
@@ -91,7 +91,7 @@ function extractMatchDetails(html){
                 let fours =  $(allCols[5]).text().trim();
                 let sixes = $(allCols[6]).text().trim();
                 let strikeRate = $(allCols[7]).text().trim();
-                // console.log(`${playerName} ${runs} ${balls} ${fours} ${sixes} ${strikeRate}`);   
+                console.log(`${playerName} ${runs} ${balls} ${fours} ${sixes} ${strikeRate}`);   
                 processPlayer(teamName, playerName, runs, balls, fours, sixes, strikeRate, oppTeamName, venue, date, result);
             }
         }

@@ -26,7 +26,7 @@ function extractLink(html){
     // console.log(resultBox.length); //1
     let resultLink = $(resultBox).find("a").attr("href");
     let resultLinkFull = `https://www.espncricinfo.com${resultLink}`;
-    // console.log(resultLinkFull);
+    console.log(resultLinkFull);
     // getAllMatchesLink(resultLinkFull);
     AllMatchObj.gAML(resultLinkFull);
 
@@ -55,7 +55,7 @@ function extractLink(html){
 //     for(let i = 0; i < matchesArr.length; i++){
 //         let matchUrl = $(matchesArr[i]).attr("href");
 //         // console.log(matchUrl);
-//         let matchFullUrl = `https://www.espncricinfo.com${matchUrl}`;
+        // let matchFullUrl = `https://www.espncricinfo.com${matchUrl}`;
 //         matchesUrl.push(matchFullUrl);
 //         //function name prep by me
 //         scoreCard(matchFullUrl);
