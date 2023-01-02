@@ -2,10 +2,11 @@ const url = "https://www.espncricinfo.com/series/ipl-2020-21-1210595";
 //data to fill in excel - venue, data, opponent, result, runs, balls, fours sexes, sr
 const request = require("request");
 const cheerio = require("cheerio");
+const path = require("path");
 const fs = require("fs");
 const AllMatchObj = require("./allMatch");
 //home page
-const iplPath = path.join(_dirName, "ipl");
+const iplPath = path.join(__dirname, "ipl");
 dirCreater(iplPath);
 request(url, cb);
 function cb(err, response, html){
@@ -80,7 +81,7 @@ function prepScoreCard(html){
     let $ = cheerio.load(html);
 }
 
-function dirCreater(file){
+function dirCreater(filePath){
     if(fs.existsSync(filePath) == false){
         fs.mkdirSync(filePath);
     }
