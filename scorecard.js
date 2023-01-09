@@ -102,7 +102,7 @@ function extractMatchDetails(html){
 
 }
 function processPlayer(teamName, playerName, runs, balls, fours, sixes, strikeRate, oppTeamName, venue, date, result){
-    let teamPath = path.join(__dirname, "ipl", teamName);
+    let teamPath = path.join(__dirname, "OutputFolder", teamName);
     dirCreater(teamPath);
     let filePath = path.join(teamPath, playerName + ".xlsx");
     let content = excelReader(filePath, playerName);

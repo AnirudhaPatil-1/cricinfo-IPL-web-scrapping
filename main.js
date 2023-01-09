@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 const AllMatchObj = require("./allMatch");
 //home page
-const iplPath = path.join(__dirname, "ipl");
+const iplPath = path.join(__dirname, "OutputFolder");
 dirCreater(iplPath);
 request(url, cb);
 function cb(err, response, html){
